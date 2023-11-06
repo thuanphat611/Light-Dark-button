@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./fontawesome-free-6.4.0-web/css/all.css">
+  <style>
+    .light-btn {
+      height: 20px;
+      width: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .light-btn_icon {
+      font-size: 15px;
+    }
+
+    .light-btn_frame {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      height: 90%;
+      border: 2px solid #000;
+      border-radius: 18px;
+      margin: 0 5px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .light-btn_circle {
+      height: 16px;
+      width: 16px;
+      background-color: #000;
+      border-radius: 50%;
+      margin-left: 1px;
+      transition: transform 0.3s ease-in;
+      position: absolute;
+      left: 0;
+    }
+
+    .container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .darkTheme {
+      color: white;
+      background-color: black;
+    }
+    
+    .darkTheme .light-btn_icon{
+      color: white;
+    }
+
+    .darkTheme .light-btn_frame {
+      border-color: white;
+    }
+
+    .darkTheme .light-btn_circle {
+      background-color: white;
+    }
+  </style>
+  
+</head>
+<body>
+  <div class="container">
+    <h1>Light/Dark Button</h1>
+    <div class="light-btn">
+      <i class="light-btn_icon fa-regular fa-sun"></i>
+      <div class="light-btn_frame">
+        <div class="light-btn_circle"></div>
+      </div>
+      <i class="light-btn_icon fa-regular fa-moon"></i>
+    </div>
+  </div>
+  
+  <script>
+    let onLeft = true;
+    const container = document.querySelector(".container");
+    const lightButton = document.querySelector(".light-btn_frame");
+    const lightButton_circle = document.querySelector(".light-btn_circle");
+    lightButton.addEventListener("click", function () {
+      container.classList.toggle("darkTheme");
+      onLeft = !onLeft;
+      if (onLeft) {
+        lightButton_circle.style.transform = `translateX(0)`;;
+      }
+      else {
+        lightButton_circle.style.transform = `translateX(${(lightButton.offsetWidth - 2*2) - lightButton_circle.offsetWidth - 1}px)`;;
+      }
+    });
+  </script>
+</body>
+</html>
